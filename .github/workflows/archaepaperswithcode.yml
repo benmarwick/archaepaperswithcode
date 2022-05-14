@@ -11,7 +11,7 @@ on:
       tags:
         description: 'Run archaepaperswithcode manually'
 jobs:
-  fitzartbot-post:
+  archaepaperswithcode-post:
     runs-on: macos-latest
     env:
       TWITTER_CONSUMER_API_KEY: ${{ secrets.TWITTER_CONSUMER_API_KEY }}
