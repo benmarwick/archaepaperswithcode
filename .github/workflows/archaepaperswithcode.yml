@@ -1,4 +1,4 @@
-name: fitzArtBot
+name: archaepaperswithcode
 on:
   schedule:
     - cron: '0 */6 * * *'
@@ -9,7 +9,7 @@ on:
         required: true
         default: 'warning'
       tags:
-        description: 'Run fitzArtBot manually'
+        description: 'Run archaepaperswithcode manually'
 jobs:
   fitzartbot-post:
     runs-on: macos-latest
@@ -28,7 +28,7 @@ jobs:
       - name: Install jsonlite package
         run: Rscript -e 'install.packages("jsonlite", dependencies = TRUE)'
       - name: Create and post tweet
-        run: Rscript fitz-twitter-art-bot-tweet.R
+        run: Rscript archaepaperswithcode.R
       - name: Keepalive Workflow
         uses: gautamkrishnar/keepalive-workflow@1.0.7
 
