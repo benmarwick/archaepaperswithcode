@@ -1,4 +1,5 @@
 # Tweet the latest paper added ----------------------------
+
 library(git2r)
 
 ## Create a temporary directory to hold the repository
@@ -9,8 +10,8 @@ dir.create(path, recursive=TRUE)
 repo <- clone("https://github.com/benmarwick/ctv-archaeology/", path)
 
 ## get contents of current and previous commits
-current_commit <- commits(repo)[[1]]
-previous_commit <- commits(repo)[[2]]
+current_commit <- commits(repo)[[11]]
+previous_commit <- commits(repo)[[12]]
 
 # get contents of the difference between the two commits
 diff_contents <- 
@@ -27,16 +28,17 @@ diff_contents_1 <- paste(diff_contents, collapse = " ")
 new_text <- stringr::str_extract(diff_contents_1, "(?<=  \\+).+(?=\\+)" )
 new_text <- stringr::str_squish(new_text)
 
+# compose tweet 1
 tweet1 <- paste0("New #archaeology paper with #rstats code, take a look! \n\n",
                  new_text)
+
+# check tweet length, and truncate if it's longer than 280 chr
+tweet1 <- ifelse(nchar(tweet1) <= 280, tweet1, str_trunc(tweet1, 275))
 
 # print the output to help with testing
 tweet1
 
 # Tweet current size of the list -------------------------------
-
-# also at https://gist.github.com/benmarwick/f11ae49ab9afde0071b133012ff76cbc
-
 ctv <- "https://raw.githubusercontent.com/benmarwick/ctv-archaeology/master/README.md"
 
 library(tidyverse)
@@ -56,12 +58,13 @@ archy_ctv_readme_20XX <- str_squish(unlist(archy_ctv_readme_20XX))
 archy_ctv_readme_20XX <- as.numeric(archy_ctv_readme_20XX)
 archy_ctv_readme_20XX <- archy_ctv_readme_20XX[!is.na(archy_ctv_readme_20XX)]
 number_of_reproducible_articles <- length(archy_ctv_readme_20XX)
+number_of_reproducible_articles_this_year <- sum(archy_ctv_readme_20XX == as.integer(format(Sys.Date(), "%Y")))
+this_year <- as.integer(format(Sys.Date(), "%Y"))
 
 # get a few journal names
 # get a few journal names
 archy_ctv_readme_journals <- str_which(archy_ctv_readme, glue_collapse(archy_ctv_readme_20XX, "|"))
 archy_ctv_readme_journals <- archy_ctv_readme[archy_ctv_readme_journals]
-
 
 journals <- c("Journal of Archaeological Method and Theory",
               "J Archaeol Sci",
@@ -159,18 +162,14 @@ archaeology_articles_r_reproducible <-
 
 archaeology_articles_r_reproducible
 
-ggsave("papers-per-year.png",
+ggsave(here::here("figures/papers-per-year.png"),
        w = 15,
        h = 9)
-
-tweet2 <- paste0("There are now ", number_of_reproducible_articles, 
-                 " #archaeology papers that include #rstats code. You can see the full list here: https://github.com/benmarwick/ctv-archaeology#publications-that-include-r-code")
 
 # for testing
 tweet2
 
 # Send tweets --------------------------------------------------
-
 
 library(rtweet)
 
