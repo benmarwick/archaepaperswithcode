@@ -23,7 +23,7 @@ jobs:
       - name: Install libgit2
         run: sudo apt-get install -y libgit2-dev
       - name: Install R packages
-        run: Rscript -e 'install.packages(c("git2r", "stringr", "rtweet"), dependencies = TRUE)'
+        run: Rscript -e 'install.packages(c("git2r", "glue", "rtweet", "tidyverse"), repos = "https://cloud.r-project.org", dependencies = TRUE)'
       - name: Create and post tweet
         run: Rscript archaepaperswithcode.R
       - name: Keepalive Workflow
