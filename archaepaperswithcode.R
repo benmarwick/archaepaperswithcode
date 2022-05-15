@@ -166,6 +166,14 @@ ggsave("papers-per-year.png",
        w = 15,
        h = 9)
 
+# compose tweet 2
+tweet2 <- paste0("There are now ", number_of_reproducible_articles, 
+                 " #archaeology papers that include #rstats code, with ",
+                 number_of_reproducible_articles_this_year, 
+                 " published in ", 
+                 this_year,
+                 ". You can see the full list here: https://github.com/benmarwick/ctv-archaeology#publications-that-include-r-code")
+
 # for testing
 tweet2
 
