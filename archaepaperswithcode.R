@@ -10,8 +10,8 @@ dir.create(path, recursive=TRUE)
 repo <- clone("https://github.com/benmarwick/ctv-archaeology/", path)
 
 ## get contents of current and previous commits
-current_commit <- commits(repo)[[11]]
-previous_commit <- commits(repo)[[12]]
+current_commit <- commits(repo)[[1]]
+previous_commit <- commits(repo)[[2]]
 
 # get contents of the difference between the two commits
 diff_contents <- 
@@ -29,7 +29,7 @@ new_text <- stringr::str_extract(diff_contents_1, "(?<=  \\+).+(?=\\+)" )
 new_text <- stringr::str_squish(new_text)
 
 # compose tweet 1
-tweet1 <- paste0("New #archaeology paper with #rstats code, take a look! \n\n",
+tweet1 <- paste0("New #archaeology paper with #rstats code! Take a look: \n\n",
                  new_text)
 
 # check tweet length, and truncate if it's longer than 280 chr
