@@ -1,5 +1,6 @@
 #---------------------------------------------------------------------
 library(RefManageR)
+library(tidyverse)
 # remotes::install_github("ROpenSci/bibtex")
 
 number_of_papers <- 100
