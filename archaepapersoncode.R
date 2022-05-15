@@ -1,9 +1,13 @@
 #---------------------------------------------------------------------
+# This script is run periodically, once per month, and posts a tweet
+# that shares a paper relevant to reproducible research. The papers
+# come from https://www.zotero.org/groups/4690054/reproducible_research_for_archaeologists
+#--------------------------------------------------------------------
+
 library(RefManageR)
 library(tidyverse)
-# remotes::install_github("ROpenSci/bibtex")
 
-number_of_papers <- 100
+number_of_papers <- 100 # we need something, this is arbitrary
 
 zotero_group_items <- 
 ReadZotero(group = "4690054", 
@@ -31,6 +35,7 @@ the_selected_paper_tidy <-
                             "urldate"))
 ))
 
+# tidy the reference to remove some details
 the_selected_paper_tidy <- paste0(the_selected_paper_tidy, collapse = " ")
 the_selected_paper_tidy <- str_remove(the_selected_paper_tidy, 
                                       "In\\: ")
@@ -46,6 +51,7 @@ the_selected_paper_tidy <- str_replace_all(the_selected_paper_tidy,
                                       "and", "&")
 the_selected_paper_tidy
 
+# Compose the tweet
 stock_phrases <- 
   c("Looking for guidance on how to do reproducible research? Check this out: ",
     "Here's an interesting read on reproducible research! ",
@@ -59,3 +65,22 @@ tweet_text <- paste0(stock_phrases[sample(length(stock_phrases), 1)],
 # for testing
 tweet_text
 nchar(tweet_text)
+
+# Send tweets --------------------------------------------------
+
+library(rtweet)
+
+# Create Twitter token
+archaepaperswithcode_token <- rtweet::create_token(
+  app = "archaepaperswithcode",
+  consumer_key =    Sys.getenv("TWITTER_CONSUMER_API_KEY"),
+  consumer_secret = Sys.getenv("TWITTER_CONSUMER_API_SECRET"),
+  access_token =    Sys.getenv("TWITTER_ACCESS_TOKEN"),
+  access_secret =   Sys.getenv("TWITTER_ACCESS_TOKEN_SECRET")
+)
+
+rtweet::post_tweet(
+  status = tweet_text,
+  token = archaepaperswithcode_token
+)
+
