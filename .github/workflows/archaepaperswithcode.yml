@@ -20,8 +20,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: r-lib/actions/setup-r@master
-      - name: Install rtweet package
-        run: Rscript -e 'install.packages("rtweet", dependencies = TRUE)'
+      - name: Install libgit2
+        run: sudo apt-get install -y libgit2-dev
+      - name: Install R packages
+        run: Rscript -e 'install.packages(c("git2r", "stringr", "rtweet"), dependencies = TRUE)'
       - name: Create and post tweet
         run: Rscript archaepaperswithcode.R
       - name: Keepalive Workflow
