@@ -34,3 +34,5 @@ jobs:
             any::rtweet
       - name: Create and post tweet
         run: Rscript archaepapersoncode.R
+      - name: Keepalive Workflow
+        uses: gautamkrishnar/keepalive-workflow@1.0.7
