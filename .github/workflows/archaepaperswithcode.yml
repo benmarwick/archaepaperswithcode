@@ -27,8 +27,6 @@ jobs:
             any::tidyverse
             any::git2r
             any::rtweet
-      - name: Install libgit2
-        run: sudo apt-get install -y libgit2-dev
       - name: Create and post tweet
         run: Rscript archaepaperswithcode.R
 
