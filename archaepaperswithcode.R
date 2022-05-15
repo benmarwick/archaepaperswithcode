@@ -189,13 +189,16 @@ archaepaperswithcode_token <- rtweet::create_token(
   access_token =    Sys.getenv("TWITTER_ACCESS_TOKEN"),
   access_secret =   Sys.getenv("TWITTER_ACCESS_TOKEN_SECRET")
 )
-rtweet::post_tweet(
-  status = tweet1,
-  token = archaepaperswithcode_token
-)
 
 rtweet::post_tweet(
   status = tweet2,
   media = "papers-per-year.png",
   token = archaepaperswithcode_token
 )
+
+rtweet::post_tweet(
+  status = tweet1,
+  token = archaepaperswithcode_token
+)
+
+
