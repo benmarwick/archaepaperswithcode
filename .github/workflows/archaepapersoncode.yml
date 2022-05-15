@@ -26,6 +26,7 @@ jobs:
           cache-version: 1
           packages: |
             any::tidyverse
+            any::bibtex
             any::RefManageR
             any::rtweet
       - name: Create and post tweet
