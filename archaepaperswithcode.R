@@ -29,6 +29,8 @@ system(paste("cd ",
 # extract only the new text
 diff_contents_1 <- paste(diff_contents, collapse = " ")
 new_text <- stringr::str_extract(diff_contents_1, "(?<=  \\+).+(?=\\+)" )
+new_text <- stringr::str_remove_all(new_text, "_" )
+new_text <- stringr::str_remove_all(new_text, "_" )
 new_text <- stringr::str_squish(new_text)
 
 # compose tweet 1
