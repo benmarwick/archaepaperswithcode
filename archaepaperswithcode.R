@@ -1,6 +1,9 @@
-# Tweet the latest paper added ----------------------------
-
+library(tidyverse)
+library(glue)
 library(git2r)
+library(rtweet)
+
+# Tweet the latest paper added ----------------------------
 
 ## Create a temporary directory to hold the repository
 path <- file.path(tempfile(pattern="ctv-"), "ctv")
@@ -41,8 +44,7 @@ tweet1
 # Tweet current size of the list -------------------------------
 ctv <- "https://raw.githubusercontent.com/benmarwick/ctv-archaeology/master/README.md"
 
-library(tidyverse)
-library(glue)
+
 
 archy_ctv_readme <- readLines(ctv)
 
@@ -179,7 +181,7 @@ tweet2
 
 # Send tweets --------------------------------------------------
 
-library(rtweet)
+
 
 # Create Twitter token
 archaepaperswithcode_token <- rtweet::create_token(
