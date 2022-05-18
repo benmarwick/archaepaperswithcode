@@ -1,4 +1,5 @@
-# Twitter bot posting new archaeology papers that include R code
+# Twitter bot posting new archaeology papers that include R code <img src="inst/logo.png" align="right" height="130" />
+
 
 [![.github/workflows/archaepaperswithcode.yml](https://github.com/benmarwick/archaepaperswithcode/actions/workflows/archaepaperswithcode.yml/badge.svg)](https://github.com/benmarwick/archaepaperswithcode/actions/workflows/archaepaperswithcode.yml) [![.github/workflows/archaepapersoncode.yml](https://github.com/benmarwick/archaepaperswithcode/actions/workflows/archaepapersoncode.yml/badge.svg)](https://github.com/benmarwick/archaepaperswithcode/actions/workflows/archaepapersoncode.yml)
 
