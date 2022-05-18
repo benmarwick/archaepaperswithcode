@@ -18,22 +18,36 @@ previous_commit <- commits(repo)[[2]]
 
 # get contents of the difference between the two commits
 diff_contents <- 
-system(paste("cd ", 
-             path, 
-             " && git diff ", 
-             previous_commit$sha, 
-             " ",
-             current_commit$sha),
-       intern = TRUE)
+  system(paste("cd ", 
+               path, 
+               " && git diff ", 
+               previous_commit$sha, 
+               " ",
+               current_commit$sha),
+         intern = TRUE)
 
 # extract only the new text
 diff_contents_1 <- paste(diff_contents, collapse = " ")
 new_text <- stringr::str_extract(diff_contents_1, "(?<=  \\+).+(?=\\+)" )
+
+# shorten the text in the reference 
 new_text <- stringr::str_remove_all(new_text, "_" )
-new_text <- stringr::str_replace_all(new_text, "Journal", "J.")
-new_text <- stringr::str_replace_all(new_text, "Archaeology|Archaeological", "Arch.")
+new_text <- stringr::str_replace_all(new_text, "Journal of Archaeological Science: Reports", "JAS:R")
+new_text <- stringr::str_replace_all(new_text, "Journal of Archaeological Science", "JAS")
+new_text <- stringr::str_replace_all(new_text, "Archaeology|Archaeological", "Arch")
 new_text <- stringr::str_replace_all(new_text, "Science", "Sci.")
+new_text <- stringr::str_replace_all(new_text, "Reports", "Rep")
+new_text <- stringr::str_replace_all(new_text, "and", "&")
 new_text <- stringr::str_squish(new_text)
+
+# if the number of characters for authors is >10, then replace with et al.
+new_text <- 
+ifelse(
+  nchar(str_extract(new_text, "\\..*?\\(20")) > 10,
+  gsub("\\..*?\\(20", ". et al. (20", new_text),
+  new_text
+)
+
 
 # compose tweet 1
 tweet1 <- paste0("New #archaeology paper with #rstats code! Take a look: \n\n",
@@ -206,5 +220,4 @@ rtweet::post_tweet(
   status = tweet1,
   token = archaepaperswithcode_token
 )
-
 
