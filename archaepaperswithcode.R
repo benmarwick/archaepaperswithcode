@@ -30,7 +30,9 @@ system(paste("cd ",
 diff_contents_1 <- paste(diff_contents, collapse = " ")
 new_text <- stringr::str_extract(diff_contents_1, "(?<=  \\+).+(?=\\+)" )
 new_text <- stringr::str_remove_all(new_text, "_" )
-new_text <- stringr::str_remove_all(new_text, "_" )
+new_text <- stringr::str_replace_all(new_text, "Journal", "J.")
+new_text <- stringr::str_replace_all(new_text, "Archaeology|Archaeological", "Arch.")
+new_text <- stringr::str_replace_all(new_text, "Science", "Sci.")
 new_text <- stringr::str_squish(new_text)
 
 # compose tweet 1
