@@ -34,10 +34,11 @@ new_text <- stringr::str_extract(diff_contents_1, "(?<=  \\+).+(?=\\+)" )
 new_text <- stringr::str_remove_all(new_text, "_" )
 new_text <- stringr::str_replace_all(new_text, "Journal of Archaeological Science: Reports", "JAS:R")
 new_text <- stringr::str_replace_all(new_text, "Journal of Archaeological Science", "JAS")
-new_text <- stringr::str_replace_all(new_text, "Archaeology|Archaeological", "Arch")
+new_text <- stringr::str_replace_all(new_text, "Archaeology|Archaeological", "Arch.")
 new_text <- stringr::str_replace_all(new_text, "Science", "Sci.")
 new_text <- stringr::str_replace_all(new_text, "Reports", "Rep")
 new_text <- stringr::str_replace_all(new_text, "and", "&")
+new_text <- stringr::str_replace_all(new_text, "Quaternary International", "QI")
 new_text <- stringr::str_squish(new_text)
 
 # if the number of characters for authors is >10, then replace with et al.
@@ -61,8 +62,6 @@ tweet1
 
 # Tweet current size of the list -------------------------------
 ctv <- "https://raw.githubusercontent.com/benmarwick/ctv-archaeology/master/README.md"
-
-
 
 archy_ctv_readme <- readLines(ctv)
 
