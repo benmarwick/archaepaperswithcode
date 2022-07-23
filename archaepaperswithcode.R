@@ -220,7 +220,8 @@ auth_as(auth = auth)
 
 rtweet::post_tweet(
   status = tweet2,
-  media = "papers-per-year.png"
+  media = "papers-per-year.png",
+  media_alt_text = "plot showing the number of archaeology articles that include R code published per year"
 )
 
 rtweet::post_tweet(
