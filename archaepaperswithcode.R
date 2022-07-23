@@ -208,22 +208,22 @@ tweet2
 
 
 # Create Twitter token
-archaepaperswithcode_token <- rtweet::create_token(
-  app = "archaepaperswithcode",
-  consumer_key =    Sys.getenv("TWITTER_CONSUMER_API_KEY"),
-  consumer_secret = Sys.getenv("TWITTER_CONSUMER_API_SECRET"),
+auth <- rtweet_bot(
+  api_key =    Sys.getenv("TWITTER_CONSUMER_API_KEY"),
+  api_secret = Sys.getenv("TWITTER_CONSUMER_API_SECRET"),
   access_token =    Sys.getenv("TWITTER_ACCESS_TOKEN"),
   access_secret =   Sys.getenv("TWITTER_ACCESS_TOKEN_SECRET")
 )
 
+auth_as(auth = auth)
+
+
 rtweet::post_tweet(
   status = tweet2,
-  media = "papers-per-year.png",
-  token = archaepaperswithcode_token
+  media = "papers-per-year.png"
 )
 
 rtweet::post_tweet(
-  status = tweet1,
-  token = archaepaperswithcode_token
+  status = tweet1
 )
 
