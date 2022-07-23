@@ -49,13 +49,20 @@ ifelse(
   new_text
 )
 
+# if the number of characters for title is >100, then truncate the title
+new_text <- 
+  ifelse(
+    nchar(str_extract(new_text, "(?<=\\)\\. ).+(?=http)")) > 100,
+    gsub(str_extract(new_text, "(?<=\\)\\. ).+(?=http)"), 
+         str_c(str_trunc(str_extract(new_text, "(?<=\\)\\. ).+(?=http)"), 100), " "),
+    new_text),
+    new_text
+  )
+
 
 # compose tweet 1
 tweet1 <- paste0("New #archaeology paper with #rstats code! Take a look: \n\n",
                  new_text)
-
-# check tweet length, and truncate if it's longer than 280 chr
-tweet1 <- ifelse(nchar(tweet1) <= 280, tweet1, str_trunc(tweet1, 275))
 
 # print the output to help with testing
 tweet1
