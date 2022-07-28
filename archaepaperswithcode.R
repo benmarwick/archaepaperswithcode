@@ -50,12 +50,19 @@ ifelse(
 )
 
 # if the number of characters for title is >100, then truncate the title
+
+full_title <- str_extract(new_text, "(?<=\\)\\. ).+(?=http)")
+shortened_title <- str_c(str_trunc(str_extract(new_text, "(?<=\\)\\. ).+(?=http)"), 
+                                   100), " ")
+
 new_text <- 
   ifelse(
-    nchar(str_extract(new_text, "(?<=\\)\\. ).+(?=http)")) > 100,
-    gsub(str_extract(new_text, "(?<=\\)\\. ).+(?=http)"), 
-         str_c(str_trunc(str_extract(new_text, "(?<=\\)\\. ).+(?=http)"), 100), " "),
-    new_text),
+    nchar(full_title) > 100,
+    gsub(
+      pattern = full_title, 
+      replacement = shortened_title,
+      x = new_text,
+      fixed = TRUE),
     new_text
   )
 
