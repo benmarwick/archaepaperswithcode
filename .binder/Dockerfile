@@ -1,11 +1,9 @@
-FROM rocker/binder:4.1.0
+FROM rocker/binder:4.0.2
 LABEL maintainer='Ben Marwick'
 USER root
-RUN apt-get install libgit2-dev -y
 COPY . ${HOME}
 RUN chown -R ${NB_USER} ${HOME}
 USER ${NB_USER}
 
-RUN R --vanilla -s -e "options(repos = list(CRAN = 'http://cran.rstudio.com'));  install.packages('git2r', 'glue', 'RefManageR', 'rtweet', 'stringr', 'tidyverse')"
-
-RUN exit 0
+## run any install.R script we find
+RUN if [ -f install.R ]; then R --quiet -f install.R; fi
