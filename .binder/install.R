@@ -1,8 +1,0 @@
-install.packages(
-  "git2r",
-  "glue",
-  "RefManageR",
-  "rtweet",
-  "stringr",
-  "tidyverse"
-)
