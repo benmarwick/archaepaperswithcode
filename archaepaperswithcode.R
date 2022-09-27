@@ -37,7 +37,7 @@ new_text <- stringr::str_replace_all(new_text, "Journal of Archaeological Scienc
 new_text <- stringr::str_replace_all(new_text, "Archaeology|Archaeological", "Arch.")
 new_text <- stringr::str_replace_all(new_text, "Science|Scientific", "Sci")
 new_text <- stringr::str_replace_all(new_text, "Reports", "Rep")
-new_text <- stringr::str_replace_all(new_text, " and ", "&")
+new_text <- stringr::str_replace_all(new_text, " and ", " & ")
 new_text <- stringr::str_replace_all(new_text, "Quaternary International", "QI")
 new_text <- stringr::str_squish(new_text)
 
