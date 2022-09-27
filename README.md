@@ -1,7 +1,8 @@
 # Twitter bot posting archaeology papers with R code <img src="logo.png" align="right" height="130" />
 
   <!-- badges: start -->
-[![.github/workflows/archaepaperswithcode.yml](https://github.com/benmarwick/archaepaperswithcode/actions/workflows/archaepaperswithcode.yml/badge.svg)](https://github.com/benmarwick/archaepaperswithcode/actions/workflows/archaepaperswithcode.yml) [![.github/workflows/archaepapersoncode.yml](https://github.com/benmarwick/archaepaperswithcode/actions/workflows/archaepapersoncode.yml/badge.svg)](https://github.com/benmarwick/archaepaperswithcode/actions/workflows/archaepapersoncode.yml) [![Launch Rstudio Binder](http://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/benmarwick/archaepaperswithcode/main?urlpath=rstudio)
+[![.github/workflows/archaepaperswithcode.yml](https://github.com/benmarwick/archaepaperswithcode/actions/workflows/archaepaperswithcode.yml/badge.svg)](https://github.com/benmarwick/archaepaperswithcode/actions/workflows/archaepaperswithcode.yml) [![.github/workflows/archaepapersoncode.yml](https://github.com/benmarwick/archaepaperswithcode/actions/workflows/archaepapersoncode.yml/badge.svg)](https://github.com/benmarwick/archaepaperswithcode/actions/workflows/archaepapersoncode.yml) [![Launch Rstudio Binder](http://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/benmarwick/archaepaperswithcode/main?urlpath=rstudio) [![Twitter](https://img.shields.io/twitter/url/https/twitter.com/archpaperscode.svg?style=social&label=Follow%20%40archpaperscode)](https://twitter.com/archpaperscode)
+
 <!-- badges: end -->
 
 This twitter bot runs from two simple R scripts:
