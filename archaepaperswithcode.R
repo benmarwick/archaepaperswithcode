@@ -51,11 +51,13 @@ new_text
 
 # if the number of characters for authors is >10, then replace with et al.
 new_text <- 
-ifelse(
-  nchar(str_extract(new_text, "\\..*?\\(20")) > 10,
-  gsub("\\..*?\\(20", ". et al. (20", new_text),
-  new_text
-)
+  ifelse(
+    # get the number of characters up to the date of publication
+    nchar(stri_match_first_regex(new_text, "(.*?)\\(20")[,2]) > 10,
+    # keep first author, replace the rest with et al.
+    gsub(str_match(new_text, ",\\s*(.*?)\\s*\\(20")[,2], "et al.", new_text),
+    new_text
+  )
 
 # take a look 
 new_text
