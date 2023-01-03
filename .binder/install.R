@@ -5,4 +5,5 @@ install.packages(
   "rtweet",
   "stringr",
   "tidyverse"
+  "stringi"
 )
