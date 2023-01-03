@@ -2,6 +2,7 @@ library(tidyverse)
 library(glue)
 library(git2r)
 library(rtweet)
+library(stringi)
 
 # Tweet the latest paper added ----------------------------
 
@@ -43,6 +44,7 @@ new_text <- stringr::str_replace_all(new_text, "Reports", "Rep")
 new_text <- stringr::str_replace_all(new_text, " and ", " & ")
 new_text <- stringr::str_replace_all(new_text, "Quaternary International", "QI")
 new_text <- stringr::str_squish(new_text)
+new_text <- stringi::stri_trans_general(new_text, "Latin-ASCII")
 
 # take a look 
 new_text
