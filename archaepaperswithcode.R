@@ -30,6 +30,9 @@ diff_contents <-
 diff_contents_1 <- paste(diff_contents, collapse = " ")
 new_text <- stringr::str_extract(diff_contents_1, "(?<=  \\+).+(?=\\+)" )
 
+# take a look 
+new_text
+
 # shorten the text in the reference 
 new_text <- stringr::str_remove_all(new_text, "_" )
 new_text <- stringr::str_replace_all(new_text, "Journal of Archaeological Science: Reports", "JAS:R")
@@ -41,6 +44,9 @@ new_text <- stringr::str_replace_all(new_text, " and ", " & ")
 new_text <- stringr::str_replace_all(new_text, "Quaternary International", "QI")
 new_text <- stringr::str_squish(new_text)
 
+# take a look 
+new_text
+
 # if the number of characters for authors is >10, then replace with et al.
 new_text <- 
 ifelse(
@@ -49,11 +55,17 @@ ifelse(
   new_text
 )
 
+# take a look 
+new_text
+
 # if the number of characters for title is >100, then truncate the title
 
 full_title <- str_extract(new_text, "(?<=\\)\\. ).+(?=http)")
 shortened_title <- str_c(str_trunc(str_extract(new_text, "(?<=\\)\\. ).+(?=http)"), 
                                    100), " ")
+
+# take a look 
+new_text
 
 new_text <- 
   ifelse(
@@ -66,6 +78,8 @@ new_text <-
     new_text
   )
 
+# take a look 
+new_text
 
 # compose tweet 1
 tweet1 <- paste0("New #archaeology paper with #rstats code! Take a look: \n\n",
