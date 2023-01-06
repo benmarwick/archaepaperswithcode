@@ -10,7 +10,7 @@ This twitter bot runs from two simple R scripts:
 1. When there is an update to our list of archaeology papers with R code https://github.com/benmarwick/ctv-archaeology#publications-that-include-r-code, the script here posts a tweet with details of the new paper. 
 2. Independant of that list, every 30 days the script posts a tweet with details of an informative article about how to make research more reproducible. The article is drawn from this [Zotero Group Library](https://www.zotero.org/groups/4690054/)
 
-The bot tweets at https://twitter.com/archpaperscode
+The bot tweets at https://twitter.com/archpaperscode and toots at https://archaeo.social/@archpaperscode
 
 ## How this works
 
